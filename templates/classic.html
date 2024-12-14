@@ -1,0 +1,18 @@
+{% extends  'base.html' %}
+
+
+{% block head %}
+    <title>AOTODLE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/character.css') }}">
+{% endblock %}
+
+
+{% block main %}
+    <div class="game_window">
+        <h1> THIS IS THE GAME </h1>
+        <p> work in progress
+        </p>
+        <img src="{{ url_for( 'static', filename='images/ErenJaeger.webp') }}" alt="CharacterImage" class="character_image">
+    </div>
+      
+{% endblock %}
