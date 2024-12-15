@@ -1,7 +1,16 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
+import db
 
 classic_bp = Blueprint('classic', __name__)
 
-@classic_bp.route('/classic')
+names = []
+
+@classic_bp.route('/classic', methods=['POST','GET'])
 def classic():
-    return render_template('classic.html')
+    
+    if request.method == 'POST':
+        if request.form['name'] not in names:
+            names.append(request.form['name'])
+    print(names)
+    rows = db.get_all_saved_characters(names)
+    return render_template('classic.html', items=rows)

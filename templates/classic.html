@@ -3,7 +3,7 @@
 
 {% block head %}
     <title>AOTODLE</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/character.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/classic.css') }}">
 {% endblock %}
 
 
@@ -12,10 +12,57 @@
         <h1> THIS IS THE GAME </h1>
         <p> work in progress
         </p>
+        <form action="/classic" method="POST" style="margin: 0;">
+            <input type="text" name="name" required>
+            <button type="submit"> Enter </button>
+        </form>
     </div>
 
     <div class="game_window">
-        <img src="{{ url_for( 'static', filename='images/ErenJaeger.webp') }}" alt="CharacterImage" class="character_image">
+        <table border="2">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Affiliation1</th>
+                    <th>Affiliation2</th>
+                    <th>Residence</th>
+                    <th>Status</th>
+                    <th>TitanKills</th>
+                    <th>TitanPowers</th>
+                    <th>Debut</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td><img src="{{url_for('static', filename=item[10].split('static/')[1])}}" class="character_image" /></td>
+                    <td>{{ item[1] }}</td>
+                    {% if item[2] %}
+                        <td> Female </td>
+                    {% else %}
+                        <td> Male </td>
+                    {% endif %}
+                    <td>{{ item[3] }}</td>
+                    <td>{{ item[4] }}</td>
+                    <td>{{ item[5] }}</td>
+                    {% if item[6] %}
+                        <td> Alive </td>
+                    {% else %}
+                        <td> Dead </td>
+                    {% endif %}
+                    <td>{{ item[7] }}</td>
+                    {% if item[8] %}
+                        <td> Yes </td>
+                    {% else %}
+                        <td> No </td>
+                    {% endif %}
+                    <td>{{ item[9] }}</td> 
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
       
 {% endblock %}
