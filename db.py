@@ -59,3 +59,13 @@ def get_all_saved_characters(names):
 
         results.extend(rows)
     return results
+
+def check_name_in_database(name):
+    conn = connect_to_database()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM Characters WHERE Name = ?", (name,))
+    rows = cursor.fetchall()
+    if not rows:
+        return False
+    else:
+        return True

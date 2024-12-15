@@ -9,8 +9,7 @@ names = []
 def classic():
     
     if request.method == 'POST':
-        if request.form['name'] not in names:
+        if db.check_name_in_database(request.form['name']):
             names.append(request.form['name'])
-    print(names)
     rows = db.get_all_saved_characters(names)
-    return render_template('classic.html', items=rows)
+    return render_template('classic.html', characters=rows)

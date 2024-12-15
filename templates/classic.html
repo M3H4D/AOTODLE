@@ -2,14 +2,14 @@
 
 
 {% block head %}
-    <title>AOTODLE</title>
+    <title>AOTODLE - Classic</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/classic.css') }}">
 {% endblock %}
 
 
 {% block main %}
     <div class="container">
-        <h1> THIS IS THE GAME </h1>
+        <h1> Classic </h1>
         <p> work in progress
         </p>
         <form action="/classic" method="POST" style="margin: 0;">
@@ -35,30 +35,30 @@
                 </tr>
             </thead>
             <tbody>
-                {% for item in items %}
+                {% for character in characters %}
                 <tr>
-                    <td><img src="{{url_for('static', filename=item[10].split('static/')[1])}}" class="character_image" /></td>
-                    <td>{{ item[1] }}</td>
-                    {% if item[2] %}
+                    <td><img src="{{url_for('static', filename=character[10].split('static/')[1])}}" class="character_image" /></td>
+                    <td>{{ character[1] }}</td>
+                    {% if character[2] %}
                         <td> Female </td>
                     {% else %}
                         <td> Male </td>
                     {% endif %}
-                    <td>{{ item[3] }}</td>
-                    <td>{{ item[4] }}</td>
-                    <td>{{ item[5] }}</td>
-                    {% if item[6] %}
+                    <td>{{ character[3] }}</td>
+                    <td>{{ character[4] }}</td>
+                    <td>{{ character[5] }}</td>
+                    {% if character[6] %}
                         <td> Alive </td>
                     {% else %}
                         <td> Dead </td>
                     {% endif %}
-                    <td>{{ item[7] }}</td>
-                    {% if item[8] %}
+                    <td>{{ character[7] }}</td>
+                    {% if character[8] %}
                         <td> Yes </td>
                     {% else %}
                         <td> No </td>
                     {% endif %}
-                    <td>{{ item[9] }}</td> 
+                    <td>{{ character[9] }}</td> 
                 </tr>
                 {% endfor %}
             </tbody>
