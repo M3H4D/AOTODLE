@@ -1,9 +1,10 @@
 SHORT TERM
 DONE ::: Small bug where all names even wrong ones are stored in list "names"
 DONE ::: add 2 new characers femals and a bit unique
-- Select random Character as goal
-- Win when selected
+DONE ::: Select random Character as goal
+DONE ::: Win when selected
 - Highlight colors when Wrong
+- check and compare values and highlight 
 
 LONG TERM
 - drop down menu for characters
