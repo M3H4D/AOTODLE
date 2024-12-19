@@ -19,6 +19,12 @@
     </div>
 
     <div class="game_window">
+        {% if found %}
+            <h1>CHAR IS FOUND</h1>
+            <form action="/classic/start" method="POST" style="margin: 0;">
+                <button type="submit"> Restart </button>
+            </form>
+        {% else %}
         <table border="2">
             <thead>
                 <tr>
@@ -63,6 +69,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% endif %}
     </div>
       
 {% endblock %}

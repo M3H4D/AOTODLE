@@ -4,7 +4,7 @@ from routes.home import home_bp
 from routes.classic import classic_bp
 
 app = Flask(__name__)
-
+app.secret_key = 'supersecretkey'
 db.create_tables()
 
 app.register_blueprint(home_bp)

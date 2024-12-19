@@ -11,7 +11,7 @@ def create_tables():
     # Create Characters Table
     conn.execute('''
         CREATE TABLE IF NOT EXISTS Characters (
-            CharactedID INTEGER PRIMARY KEY AUTOINCREMENT,
+            CharacterID INTEGER PRIMARY KEY AUTOINCREMENT,
             Name TEXT,
             Gender BINARY,
             Affiliation1 TEXT,
@@ -40,13 +40,14 @@ def add_character_to_database(n,g,a1,a2,r,a,tk,tp,d,i):
     conn.commit()
     conn.close()
 
-def get_character(name):
+def get_characterID(name):
     conn = connect_to_database()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM Characters WHERE Name = ?", (name,))
-    rows = cursor.fetchall()
+    cursor.execute("SELECT CharacterID FROM Characters WHERE Name = ?", (name,))
+    charID = cursor.fetchone()
+
     conn.close()
-    return rows
+    return charID[0]
 
 def get_all_saved_characters(names):
     results = []
@@ -69,3 +70,10 @@ def check_name_in_database(name):
         return False
     else:
         return True
+    
+def number_of_characters():
+    conn = connect_to_database()
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM Characters")
+    no_of_chars = cursor.fetchone()
+    return no_of_chars[0]
