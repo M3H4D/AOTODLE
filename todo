@@ -3,8 +3,10 @@ DONE ::: Small bug where all names even wrong ones are stored in list "names"
 DONE ::: add 2 new characers femals and a bit unique
 DONE ::: Select random Character as goal
 DONE ::: Win when selected
-- Highlight colors when Wrong
-- check and compare values and highlight 
+DONE ::: Highlight colors when Wrong
+- Compare Affiliations
+- Compare Debut
+- Add more characters
 
 LONG TERM
 - drop down menu for characters
