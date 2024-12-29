@@ -16,15 +16,17 @@
             <input type="text" name="name" required>
             <button type="submit"> Enter </button>
         </form>
-    </div>
 
-    <div class="game_window">
         {% if found %}
             <h1>CHAR IS FOUND</h1>
             <form action="/classic/start" method="POST" style="margin: 0;">
                 <button type="submit"> Restart </button>
             </form>
-        {% else %}
+        {% endif %}
+    </div>
+
+    <div class="game_window">
+        
         <table border="2">
             <thead>
                 <tr>
@@ -50,34 +52,41 @@
                     {% else %}
                         <td style="background-color: {{mistakeColors[loop.index - 1][1]}};"> Male</td>
                     {% endif %}
-                    <td style="background-color: {{mistakeColors[loop.index - 1][2]}};">{{ character[3] }}</td>
-                    <td style="background-color: {{mistakeColors[loop.index - 1][3]}};">{{ character[4] }}</td>
-                    <td style="background-color: {{mistakeColors[loop.index - 1][4]}};">{{ character[5] }}</td>
+                    <td style="background-color: {{mistakeColors[loop.index - 1][2][0]}};">{{ character[3] }}</td>
+                    <td style="background-color: {{mistakeColors[loop.index - 1][2][1]}};">{{ character[4] }}</td>
+                    <td style="background-color: {{mistakeColors[loop.index - 1][3]}};">{{ character[5] }}</td>
                     {% if character[6] %}
-                        <td style="background-color: {{mistakeColors[loop.index - 1][5]}};"> Alive </td>
+                        <td style="background-color: {{mistakeColors[loop.index - 1][4]}};"> Alive </td>
                     {% else %}
-                        <td style="background-color: {{mistakeColors[loop.index - 1][5]}};"> Dead </td>
+                        <td style="background-color: {{mistakeColors[loop.index - 1][4]}};"> Dead </td>
                     {% endif %}
 
-                    {% if mistakeColors[loop.index - 1][6] == 2 %}
+                    {% if mistakeColors[loop.index - 1][5] == 'up' %}
                         <td style="background-color: red;">{{ character[7] }}</td>
-                    {% elif mistakeColors[loop.index - 1][6] == 1 %}
+                    {% elif mistakeColors[loop.index - 1][5] == 'down' %}
                         <td style="background-color: maroon;">{{ character[7] }}</td>
                     {% else %}
                         <td style="background-color: green;">{{ character[7] }}</td>
                     {% endif %}
 
                     {% if character[8] %}
-                        <td style="background-color: {{mistakeColors[loop.index - 1][7]}};"> Yes </td>
+                        <td style="background-color: {{mistakeColors[loop.index - 1][6]}};"> Yes </td>
                     {% else %}
-                        <td style="background-color: {{mistakeColors[loop.index - 1][7]}};"> No </td>
+                        <td style="background-color: {{mistakeColors[loop.index - 1][6]}};"> No </td>
                     {% endif %}
-                    <td style="background-color: {{mistakeColors[loop.index - 1][8]}};">{{ character[9] }}</td> 
+
+                    {% if mistakeColors[loop.index - 1][7] == 'up' %}
+                        <td style="background-color: red;">{{ character[9] }}</td>
+                    {% elif mistakeColors[loop.index - 1][7] == 'down' %}
+                        <td style="background-color: maroon;">{{ character[9] }}</td>
+                    {% else %}
+                        <td style="background-color: green;">{{ character[9] }}</td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        {% endif %}
+        
     </div>
       
 {% endblock %}

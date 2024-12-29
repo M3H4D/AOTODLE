@@ -17,7 +17,7 @@ def create_tables():
             Affiliation1 TEXT,
             Affiliation2 TEXT,
             Residence TEXT,
-            Alive TEXT,
+            Alive BINARY,
             TitanKills INTEGER,
             TitanPowers BINARY,
             Debut TEXT,
@@ -57,8 +57,10 @@ def get_all_saved_characters(names):
     for name in names:
         cursor.execute("SELECT * FROM Characters WHERE Name = ?", (name,))
         rows = cursor.fetchall()
-
         results.extend(rows)
+
+    conn.close()
+
     return results
 
 def check_name_in_database(name):
@@ -66,6 +68,9 @@ def check_name_in_database(name):
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM Characters WHERE Name = ?", (name,))
     rows = cursor.fetchall()
+
+    conn.close()
+
     if not rows:
         return False
     else:
@@ -76,4 +81,7 @@ def number_of_characters():
     cursor = conn.cursor()
     cursor.execute("SELECT COUNT(*) FROM Characters")
     no_of_chars = cursor.fetchone()
+    
+    conn.close()
+
     return no_of_chars[0]
