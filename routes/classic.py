@@ -42,9 +42,9 @@ def classic():
     print(mistakeColors)
     
     rows = db.get_all_saved_characters(names)
-
+    namesCount = len(names)
     
-    return render_template('classic.html', characters=rows, found=found,mistakeColors=mistakeColors)
+    return render_template('classic.html', characters=rows, found=found,mistakeColors=mistakeColors, score=namesCount)
 
 #Starting or reseting a game
 @classic_bp.route('/classic/start', methods=['POST','GET'])

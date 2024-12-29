@@ -3,18 +3,20 @@
 import db
 
 DEBUT = [
-    "The fall of Shiganshina",
-    "104th Training Corps",
-    "The struggle for Trost",
-    "Eve of the Counterattack",
-    "The Female Titan",
-    "Assault on Stohess"
-    "Clash of the Titans",
-    "Royal Government",
-    "Return to Shiganshina",
-    "Marley",
-    "War for Paradis"
+    'The fall of Shiganshina',
+    '104th Training Corps',
+    'The struggle for Trost',
+    'Eve of the Counterattack',
+    'The Female Titan',
+    'Assault on Stohess',
+    'Clash of the Titans',
+    'Royal Government',
+    'Return to Shiganshina',
+    'Marley',
+    'War for Paradis'
 ]
+
+print(DEBUT.index('Assault on Stohess'))
 
 def check_name(current_charID, guess_charID):
     conn = db.connect_to_database()
@@ -154,6 +156,10 @@ def check_debut(current_charID, guess_charID):
     curr_charDebut = cursor.fetchone()
     cursor.execute("SELECT Debut FROM Characters WHERE CharacterID = ?", (guess_charID,))
     guess_charDebut = cursor.fetchone()
+
+    print(guess_charDebut)
+    print(guess_charDebut[0])
+    print(DEBUT.index(guess_charDebut[0]))
 
     conn.close()
 

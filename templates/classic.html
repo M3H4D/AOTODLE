@@ -19,6 +19,11 @@
 
         {% if found %}
             <h1>CHAR IS FOUND</h1>
+            {% if score > 1 %}
+                <h2>Took you {{score}} tries</h2>
+            {% else %}
+                <h2>Took you {{score}} try</h2>
+            {% endif %}
             <form action="/classic/start" method="POST" style="margin: 0;">
                 <button type="submit"> Restart </button>
             </form>
